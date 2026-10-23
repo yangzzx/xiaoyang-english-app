@@ -1,0 +1,11 @@
+/* Android has its own persistent logo, module navigation and overflow menu. */
+.en-sidebar{display:none!important}
+.en-content{margin-left:0!important}
+.en-page-root .en-content>.tabs,.en-content .tabbar,.en-page-spell .overlay{left:0!important}
+.v4-top>div:first-child,.en-topline>div:first-child{display:none}
+.v4-top,.en-topline{margin-bottom:14px;min-height:34px}
+.v4-status{width:100%;gap:8px;align-items:center}
+.v4-status .account-open-btn{margin-right:auto}
+.v4-status [data-act=refresh]{width:34px;height:34px;min-height:34px;padding:0;border-radius:50%;background:transparent;border:1px solid var(--en-line)}
+.v4-sync{padding:5px 9px}
+@media(max-width:640px){.en-content{padding-top:14px}.en-topline{justify-content:flex-start}}

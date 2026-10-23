@@ -1,0 +1,5 @@
+*.apk
+*.p12
+*.jks
+signing.json
+build/
