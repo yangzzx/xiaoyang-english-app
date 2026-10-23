@@ -31,12 +31,13 @@ def rel(path):return os.path.relpath(path,B)
 # Include only the 13 live pages, not old backups, cloud setup notes, or user data.
 modules=['','500','courses','essay','grammar','mother','papers','phon','phonics','plan','review','root','spell']
 live=B/'手机页面'
+shutil.copy2(live/'32day-data.js',ASSETS/'32day-data.js')
 sdk=ASSETS/'vendor/supabase-2.108.1.js'
 sdk.parent.mkdir(exist_ok=True)
 if not sdk.exists():
     urllib.request.urlretrieve('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.108.1/dist/umd/supabase.js',sdk)
 assert sdk.stat().st_size>10000
-native=(P/'native.js').read_text(encoding='utf-8')+'\n'+(P/'native-select.js').read_text(encoding='utf-8')+'\n'+(P/'android-cloud.js').read_text(encoding='utf-8')
+native=(P/'native.js').read_text(encoding='utf-8')+'\n'+(P/'native-select.js').read_text(encoding='utf-8')+'\n'+(P/'android-cloud.js').read_text(encoding='utf-8')+'\n'+(P/'glass-motion.js').read_text(encoding='utf-8')
 review_runtime=(P/'review-system-v14.js').read_text(encoding='utf-8')
 spell_runtime=(P/'spell-batch-v14.js').read_text(encoding='utf-8')
 spell_scope_runtime=(P/'spell-scope-native.js').read_text(encoding='utf-8')
@@ -45,6 +46,7 @@ preserve_spell_runtime=(P/'android-preserve-spell.js').read_text(encoding='utf-8
 native_css=(P/'native.css').read_text(encoding='utf-8')+'\n'+(P/'native-theme.css').read_text(encoding='utf-8')+'\n'+(P/'review-system-v14.css').read_text(encoding='utf-8')
 (ASSETS/'native.js').write_text(native,encoding='utf-8')
 shutil.copytree(P/'legal',ASSETS/'legal',dirs_exist_ok=True)
+shutil.copy2(P/'data/handbook-abc.json',ASSETS/'handbook-abc.json')
 for module in modules:
     relative=Path(module)/'index.html'
     text=(live/relative).read_text(encoding='utf-8')
@@ -115,15 +117,6 @@ for module in modules:
         text=text.replace("const today=rootDateKey(),due=rootPending.filter(r=>r.scheduled_for<=today);", "const today=rootDateKey(),due=rootPending.filter(r=>r.active!==false&&!r.paused&&r.scheduled_for<=today);")
         text=text.replace("rootPending.filter(r=>r.scheduled_for>today).forEach(r=>future[r.scheduled_for]=(future[r.scheduled_for]||0)+1);", "rootPending.filter(r=>r.active!==false&&!r.paused&&r.scheduled_for>today).forEach(r=>future[r.scheduled_for]=(future[r.scheduled_for]||0)+1);")
         text=text.replace("const lessons=rootUnwrap(a)||[];const pending=rootUnwrap(b)||[];", "const lessons=rootUnwrap(a)||[];const pending=(rootUnwrap(b)||[]).filter(r=>r.active!==false&&!r.paused);")
-        assert text.count('进入这课复习')==1
-        text=text.replace('进入这课复习','开始回忆这课')
-        old_grades='<div class="root-grades">'
-        new_grades="""<div class="root-grades" '+(rootReviewId&&rootPending.some(r=>r.id===rootReviewId&&r.day_no===g.day)?'':'hidden')+'>"""
-        assert text.count(old_grades)==1
-        text=text.replace(old_grades,new_grades)
-        old_return="$('rootReviewReturn').onclick=()=>go('checkin');"
-        assert text.count(old_return)==1
-        text=text.replace(old_return,"$('rootReviewReturn').onclick=()=>{go('checkin');rootRenderReviews()};")
     if module=='spell':
         anchor='StudyAccount.setBusinessBusy(()=>busy);'
         assert text.count(anchor)==1

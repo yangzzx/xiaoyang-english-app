@@ -55,6 +55,8 @@ public final class MainActivity extends Activity {
     private ProgressBar progress;
     private TextView offline;
     private LinearLayout bottomBar;
+    private boolean nativeSheetOpen;
+    private int statusInsetPx,bottomInsetPx;
     private final ImageView[] bottomIcons=new ImageView[4];
     private final TextView[] bottomLabels=new TextView[4];
     private static final int INK = 0xFF182B43;
@@ -71,22 +73,31 @@ public final class MainActivity extends Activity {
     private ConnectivityManager.NetworkCallback networkCallback;
 
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
+    private void syncSafeInsets(){if(web==null)return;float density=getResources().getDisplayMetrics().density;web.evaluateJavascript("document.documentElement.style.setProperty('--study-safe-top','"+(statusInsetPx/density)+"px');document.documentElement.style.setProperty('--study-safe-bottom','"+(bottomInsetPx/density)+"px');",null);}
     private void toast(String message) { Toast.makeText(this, message, Toast.LENGTH_LONG).show(); }
     private boolean local(Uri uri) { return "https".equals(uri.getScheme()) && HOST.equals(uri.getHost()) && uri.getPort() == -1 && uri.getUserInfo() == null && uri.getPath() != null && uri.getPath().startsWith("/assets/"); }
 
     @Override public void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        getWindow().setStatusBarColor(Color.WHITE);
-        getWindow().setNavigationBarColor(Color.WHITE);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR|View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
-        LinearLayout layout = new LinearLayout(this); layout.setOrientation(LinearLayout.VERTICAL); layout.setBackgroundColor(Color.WHITE);
-        // Includes navigation and keyboard insets, including Android 15's edge-to-edge mode.
-        layout.setOnApplyWindowInsetsListener((v,insets)->{v.setPadding(insets.getSystemWindowInsetLeft(),insets.getSystemWindowInsetTop(),insets.getSystemWindowInsetRight(),insets.getSystemWindowInsetBottom());if(bottomBar!=null)bottomBar.setVisibility(insets.getSystemWindowInsetBottom()>dp(120)?View.GONE:View.VISIBLE);return insets.consumeSystemWindowInsets();});
-        progress = new ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal); progress.setMax(100);progress.setProgressTintList(ColorStateList.valueOf(0xFF325ED6)); layout.addView(progress,new LinearLayout.LayoutParams(-1,dp(2)));
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        if(android.os.Build.VERSION.SDK_INT>=30)getWindow().setDecorFitsSystemWindows(false);
+        getWindow().setNavigationBarColor(Color.TRANSPARENT);
+        if(android.os.Build.VERSION.SDK_INT>=29)getWindow().setNavigationBarContrastEnforced(false);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR|View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+        LinearLayout layout = new LinearLayout(this); layout.setOrientation(LinearLayout.VERTICAL); layout.setBackground(new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TOP_BOTTOM,new int[]{0xFFBDD3EE,0xFFE5F1F4}));
+        FrameLayout edge=new FrameLayout(this);edge.setBackground(layout.getBackground());layout.setBackgroundColor(Color.TRANSPARENT);
+        edge.setOnApplyWindowInsetsListener((v,insets)->{
+            statusInsetPx=insets.getSystemWindowInsetTop();int bottom=insets.getSystemWindowInsetBottom();boolean keyboard=bottom>dp(120);bottomInsetPx=keyboard?0:bottom;
+            layout.setPadding(insets.getSystemWindowInsetLeft(),0,insets.getSystemWindowInsetRight(),keyboard?bottom:0);
+            if(bottomBar!=null){bottomBar.setVisibility(keyboard?View.GONE:View.VISIBLE);FrameLayout.LayoutParams bp=(FrameLayout.LayoutParams)bottomBar.getLayoutParams();bp.bottomMargin=bottomInsetPx+dp(8);bottomBar.setLayoutParams(bp);}
+            syncSafeInsets();return insets.consumeSystemWindowInsets();
+        });
+        progress = new ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal); progress.setMax(100);progress.setProgressTintList(ColorStateList.valueOf(0xFF325ED6)); progress.setVisibility(View.GONE);
         offline = new TextView(this); offline.setText("当前未联网，可查看课程；登录和云端保存需联网。"); offline.setPadding(dp(12),dp(8),dp(12),dp(8)); offline.setBackgroundColor(0xFFFFE5BA); offline.setTextColor(0xFF423527); offline.setVisibility(View.GONE); layout.addView(offline);
         FrameLayout pages=new FrameLayout(this);pages.setBackgroundColor(0xFFF5F7FB);pages.setClipChildren(true);
-        web = new WebView(this);web.setBackgroundColor(0xFFF5F7FB);pages.addView(web,new FrameLayout.LayoutParams(-1,-1));
-        pageTransition=new PageTransition(this,pages,web);layout.addView(pages,new LinearLayout.LayoutParams(-1,0,1)); layout.addView(createBottomBar()); setContentView(layout);
+        web = new WebView(this);web.setVerticalScrollBarEnabled(false);web.setBackgroundColor(0xFFF5F7FB);pages.addView(web,new FrameLayout.LayoutParams(-1,-1));
+        pageTransition=new PageTransition(this,pages,web);layout.addView(pages,new LinearLayout.LayoutParams(-1,0,1));
+        edge.addView(layout,new FrameLayout.LayoutParams(-1,-1));edge.addView(progress,new FrameLayout.LayoutParams(-1,dp(2),Gravity.TOP));FrameLayout.LayoutParams dock=new FrameLayout.LayoutParams(-1,dp(66),Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL);dock.setMargins(dp(12),0,dp(12),dp(8));edge.addView(createBottomBar(),dock);setContentView(edge);
         WebSettings settings = web.getSettings();
         settings.setJavaScriptEnabled(true); settings.setDomStorageEnabled(true); settings.setAllowFileAccess(false); settings.setAllowContentAccess(true);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW); settings.setMediaPlaybackRequiresUserGesture(true);
@@ -106,10 +117,10 @@ public final class MainActivity extends Activity {
 
     private int currentModule(){String path=Uri.parse(web.getUrl()==null?HOME:web.getUrl()).getPath();for(int i=0;i<MODULE_PATHS.length;i++)if(("/assets/"+MODULE_PATHS[i]).equals(path))return i;return 0;}
     private void openModule(int which){String path="/assets/"+MODULE_PATHS[which];if(!path.equals(Uri.parse(web.getUrl()==null?HOME:web.getUrl()).getPath()))web.loadUrl("https://"+HOST+path);}
-    private void navigation(){selectBottom(1);new NavigationSheet(this,MODULE_NAMES,currentModule(),this::openModule,this::refreshBottom).show();}
+    private void navigation(){if(nativeSheetOpen)return;nativeSheetOpen=true;selectBottom(1);new NavigationSheet(this,MODULE_NAMES,currentModule(),this::openModule,()->{nativeSheetOpen=false;refreshBottom();}).show();}
     private LinearLayout createBottomBar(){
-        bottomBar=new LinearLayout(this);bottomBar.setOrientation(LinearLayout.VERTICAL);bottomBar.setBackgroundColor(Color.WHITE);
-        View line=new View(this);line.setBackgroundColor(0xFFE5EAF2);bottomBar.addView(line,new LinearLayout.LayoutParams(-1,dp(1)));
+        bottomBar=new LinearLayout(this);bottomBar.setOrientation(LinearLayout.VERTICAL);bottomBar.setBackground(GlassSurface.bar(this));bottomBar.setElevation(dp(7));bottomBar.setClipToOutline(true);
+        View line=new View(this);line.setBackgroundColor(0xFFE4ECF7);bottomBar.setPadding(dp(3),dp(5),dp(3),dp(5));
         LinearLayout row=new LinearLayout(this);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(8),dp(5),dp(8),dp(5));
         String[] labels={"今日","学习","复习","我的"};int[] icons={R.drawable.nav_house,R.drawable.nav_library,R.drawable.nav_calendar_check_2,R.drawable.nav_user_round};
         for(int i=0;i<4;i++){final int tab=i;LinearLayout item=new LinearLayout(this);item.setOrientation(LinearLayout.VERTICAL);item.setGravity(Gravity.CENTER);item.setContentDescription(labels[i]);item.setFocusable(true);item.setBackground(new RippleDrawable(ColorStateList.valueOf(0x14325ED6),new ColorDrawable(Color.TRANSPARENT),null));
@@ -118,12 +129,13 @@ public final class MainActivity extends Activity {
             item.setOnClickListener(v->{switch(tab){case 0:openModule(0);break;case 1:navigation();break;case 2:openModule(11);break;case 3:myAccount();break;}});row.addView(item,new LinearLayout.LayoutParams(0,dp(56),1));
         }bottomBar.addView(row);refreshBottom();return bottomBar;
     }
-    private void selectBottom(int tab){for(int i=0;i<4;i++){if(bottomIcons[i]==null)continue;boolean on=i==tab;bottomIcons[i].setImageTintList(ColorStateList.valueOf(on?0xFF325ED6:0xFF8491A5));android.graphics.drawable.GradientDrawable pill=new android.graphics.drawable.GradientDrawable();pill.setColor(on?0xFFEDF2FF:Color.TRANSPARENT);pill.setCornerRadius(dp(16));bottomIcons[i].setBackground(pill);bottomLabels[i].setTextColor(on?0xFF325ED6:0xFF8491A5);((View)bottomLabels[i].getParent()).setSelected(on);}}
+    private void selectBottom(int tab){for(int i=0;i<4;i++){if(bottomIcons[i]==null)continue;boolean on=i==tab;bottomIcons[i].setImageTintList(ColorStateList.valueOf(on?0xFF325ED6:0xFF8491A5));android.graphics.drawable.GradientDrawable pill=new android.graphics.drawable.GradientDrawable();pill.setColor(on?0xE6E3EDFF:Color.TRANSPARENT);if(on)pill.setStroke(dp(1),0xFFFFFFFF);pill.setCornerRadius(dp(16));bottomIcons[i].setBackground(pill);bottomLabels[i].setTextColor(on?0xFF325ED6:0xFF8491A5);((View)bottomLabels[i].getParent()).setSelected(on);}}
     private void refreshBottom(){int module=currentModule();selectBottom(module==0?0:module==11?2:module==12?3:1);}
     private void myAccount(){
+        if(nativeSheetOpen)return;nativeSheetOpen=true;
         selectBottom(3);web.evaluateJavascript("JSON.stringify({email:window.StudyAccount&&StudyAccount.session&&!StudyAccount.session.user.is_anonymous?StudyAccount.session.user.email:'',sync:(document.getElementById('syncStatus')||document.getElementById('rootStatus')||{}).textContent||'请登录后查看同步状态'})",raw->{
-            if(isFinishing())return;String email="",sync="";try{Object decoded=new org.json.JSONTokener(raw).nextValue();org.json.JSONObject data=new org.json.JSONObject(String.valueOf(decoded));email=data.optString("email","");sync=data.optString("sync","");}catch(Exception ignored){}
-            new AccountSheet(this,email,sync,this::appAction,this::refreshBottom).show();
+            if(isFinishing()){nativeSheetOpen=false;return;}String email="",sync="";try{Object decoded=new org.json.JSONTokener(raw).nextValue();org.json.JSONObject data=new org.json.JSONObject(String.valueOf(decoded));email=data.optString("email","");sync=data.optString("sync","");}catch(Exception ignored){}
+            new AccountSheet(this,email,sync,this::appAction,()->{nativeSheetOpen=false;refreshBottom();}).show();
         });
     }
     private void networkStatus() {
@@ -182,7 +194,7 @@ public final class MainActivity extends Activity {
     private final class LocalClient extends WebViewClient {
         @Override public void onPageStarted(WebView view,String url,android.graphics.Bitmap icon){pageTransition.start();refreshBottom();}
         @Override public void onPageCommitVisible(WebView view,String url){pageTransition.commit();}
-        @Override public void onPageFinished(WebView view,String url){refreshBottom();}
+        @Override public void onPageFinished(WebView view,String url){syncSafeInsets();refreshBottom();}
         @Override public void doUpdateVisitedHistory(WebView view,String url,boolean reload){refreshBottom();}
         @Override public boolean shouldOverrideUrlLoading(WebView view,WebResourceRequest request){return route(request.getUrl());}
         @Override public boolean shouldOverrideUrlLoading(WebView view,String url){return route(Uri.parse(url));}
@@ -199,7 +211,7 @@ public final class MainActivity extends Activity {
         }
     }
     private final class Chrome extends WebChromeClient {
-        @Override public void onProgressChanged(WebView view,int percent){progress.setProgress(percent);progress.setVisibility(percent<100?View.VISIBLE:View.INVISIBLE);}
+        @Override public void onProgressChanged(WebView view,int percent){progress.setProgress(percent);progress.setVisibility(percent<100?View.VISIBLE:View.GONE);}
         @Override public boolean onJsAlert(WebView view,String url,String message,JsResult result){new AlertDialog.Builder(MainActivity.this).setMessage(message).setPositiveButton("知道了",(d,w)->result.confirm()).setOnCancelListener(d->result.cancel()).show();return true;}
         @Override public boolean onJsConfirm(WebView view,String url,String message,JsResult result){confirm(message,result);return true;}
         @Override public boolean onJsBeforeUnload(WebView view,String url,String message,JsResult result){confirm("本页可能有尚未保存的文字，确定离开吗？",result);return true;}
@@ -234,6 +246,9 @@ public final class MainActivity extends Activity {
 
     private final class NativeBridge {
         @JavascriptInterface public boolean ownsPageTransitions(){return true;}
+        @JavascriptInterface public float statusInset(){return statusInsetPx/getResources().getDisplayMetrics().density;}
+        @JavascriptInterface public float bottomInset(){return bottomInsetPx/getResources().getDisplayMetrics().density;}
+        @JavascriptInterface public boolean motionEnabled(){return AppMotion.enabled(MainActivity.this);}
         @JavascriptInterface public boolean isOnline(){if(connectivity==null)return false;Network n=connectivity.getActiveNetwork();NetworkCapabilities c=n==null?null:connectivity.getNetworkCapabilities(n);return c!=null&&c.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)&&c.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED);}
         @JavascriptInterface public String setDailyReminder(boolean enabled,int hour,int minute){if(hour<0||hour>23||minute<0||minute>59)return "invalid";android.content.SharedPreferences prefs=getSharedPreferences("study_reminder",MODE_PRIVATE);prefs.edit().putInt("hour",hour).putInt("minute",minute).putBoolean("enabled",false).apply();if(!enabled){DailyReminderReceiver.cancel(MainActivity.this);prefs.edit().putBoolean("enabled",false).apply();return "disabled";}if(android.os.Build.VERSION.SDK_INT>=33&&checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)!=android.content.pm.PackageManager.PERMISSION_GRANTED){pendingReminderHour=hour;pendingReminderMinute=minute;reminderPermissionPending=true;runOnUiThread(()->requestPermissions(new String[]{android.Manifest.permission.POST_NOTIFICATIONS},REQUEST_NOTIFICATIONS));return "permission";}prefs.edit().putBoolean("enabled",true).apply();DailyReminderReceiver.schedule(MainActivity.this,hour,minute);return "enabled";}
         @JavascriptInterface public void speakText(String text){if(text==null||text.length()>500)return;runOnUiThread(()->{if(!local(Uri.parse(web.getUrl())))return;if(speechReady)speech.speak(text,TextToSpeech.QUEUE_FLUSH,null,"study-word");else toast("语音不可用，请联网播放或在系统设置中安装英语语音。");});}

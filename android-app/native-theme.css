@@ -325,3 +325,118 @@ body.android-scope-active{overflow:hidden;overscroll-behavior:none}
 .android-scope-picker .android-scope-footer .android-scope-apply{background:#325ed6;border-color:#325ed6;color:#fff;font-weight:700}
 .android-scope-picker .android-scope-footer .android-scope-apply:disabled{background:#dce3f1;border-color:#dce3f1;color:#77849b}
 @media(max-width:380px){.android-scope-picker .v13-scope-panel{left:8px!important;right:8px!important;bottom:8px!important;padding-inline:12px!important}.android-scope-picker .android-scope-tools{gap:5px}.android-scope-picker .v13-scope-panel .en-btn{padding-inline:5px;font-size:10px}.android-scope-picker .v13-scope-list{min-height:80px}}
+
+/* Small-screen adjustments for the existing review layout. */
+.android-spell-book{border-left:4px solid #325ed6}.android-spell-mother{border-left-color:#92734d}.android-spell-root{border-left-color:#4d8b7b}.android-spell-phon,.android-spell-phonWords{border-left-color:#8d73bc}.android-spell-phonics{border-left-color:#bb8150}
+.android-spell-book p{font-size:13px;line-height:1.7;color:#62718a}.android-spell-samples{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.android-spell-samples span{max-width:100%;overflow-wrap:anywhere;background:#f3f6fa;padding:7px 10px;border-radius:8px;font-size:13px}
+.android-spell-review input{width:70px;min-height:44px}.android-review-chapter-actions{flex-wrap:wrap}.android-manage-module>summary,.android-manage-chapter>summary{min-height:44px;overflow-wrap:anywhere}.android-progress-title,.android-review-chapter>div{min-width:0;overflow-wrap:anywhere}
+@media(max-width:420px){.android-review-chapter{display:block!important}.android-review-chapter-actions{margin-top:12px;display:flex;gap:6px}.android-review-chapter-actions .en-btn{min-height:44px;flex:1 1 44%}.android-manage-controls .en-actions{flex-wrap:wrap}.android-manage-controls .en-btn{min-height:44px}.android-spell-book .en-btn{width:100%;min-height:44px}.v14-session h2,.v14-answer{overflow-wrap:anywhere}.v14-tabs{overflow-x:auto;flex-wrap:nowrap}.v14-tabs button{white-space:nowrap;min-height:44px}}
+
+/* v41 frosted study surfaces. Blur is limited to compact navigation, never long lists. */
+:root{--glass-base:#eef4fa;--glass-ink:#182b43;--glass-muted:#526781;--glass-blue:#325ed6;--glass-edge:#ffffffd9;--en-muted:#526781;--en-paper:#eef4fa;--en-line:#dce5f0;--en-shadow:0 8px 26px #243f7010}
+html{background:var(--glass-base)}
+body{background:radial-gradient(ellipse 90% 360px at 0 0,#dce8fc 0,transparent 100%),linear-gradient(150deg,#eef4fa,#f5f8fc 65%,#e9f4f1)!important;color:var(--glass-ink)}
+.en-content{background:transparent}
+.en-card,.en-hero,.v4-unit,.v4-stat,.v4-practice,.v4-family-root,.android-review-module,.android-progress-module,.android-manage-module,.card,.cue{background:linear-gradient(135deg,#ffffffed,#f8fbffbf);border:1px solid var(--glass-edge);box-shadow:inset 0 1px 0 #fff,0 5px 20px #243f700b}
+.en-hero{background:linear-gradient(125deg,#ffffffd9,#e8f0ffca);border-color:#ffffffed;border-radius:22px}
+.en-hero h1{letter-spacing:.1px}.en-hero-number{font-variant-numeric:tabular-nums}
+.en-hero p,.en-hero-side small,.en-hero .en-eyebrow{color:var(--glass-muted)}
+.en-btn{background:linear-gradient(160deg,#fffffff2,#eef3facf);border:1px solid #d9e3f1;box-shadow:inset 0 1px 0 #fff;color:var(--glass-ink);min-height:44px}
+.en-btn.primary,.en-content .btn.p,.en-content .dh-go,.en-content .checkin-btn{background:linear-gradient(150deg,#4778e5,#325ed6);border-color:#325ed6;color:#fff;box-shadow:inset 0 1px 0 #ffffff47,0 4px 10px #325ed61c}
+.en-btn.dark{background:linear-gradient(145deg,#304964,#182b43);color:#fff;border-color:#304964;box-shadow:inset 0 1px 0 #ffffff26}
+.en-btn:disabled{opacity:.55;box-shadow:none}.en-btn:focus-visible,summary:focus-visible{outline:3px solid #668cde;outline-offset:3px}
+.v4-tabs,.v14-tabs,.android-review-tabs{background:#e6edf6c9;border:1px solid #ffffffdb;box-shadow:inset 0 1px 0 #fff;border-radius:16px;padding:5px}
+.v4-tab.on,.v14-tabs .on,.v14-tabs .active,.android-review-tabs .active{background:linear-gradient(145deg,#fff,#f5f9ff);border-radius:11px;box-shadow:0 3px 9px #243f7012,inset 0 1px 0 #fff;color:#294fb8}
+.android-review-chapter{background:#ffffff9e;border:1px solid #fff;border-radius:14px;padding:16px;margin-top:9px}
+.android-manage-chapter,.android-progress-chapters>article{background:#ffffff99;border-color:#e1e8f2}
+.android-spell-samples span{background:#eef3faf0;border:1px solid #fff;color:#344f74}
+.android-progress-status,.android-review-chapter small,.android-manage-chapter>summary small{color:var(--glass-muted)}
+.v14-answer,.android-review-answer{background:#f8fbffeb;border:1px solid #dde7f4;border-radius:14px}
+.v4-form input,.v4-form textarea,.v4-search{background:#ffffffeb;border-color:#d7e2f0;color:var(--glass-ink)}
+.topbar,.tabs{background:#f7faffe6!important;border-color:#ffffffed;box-shadow:0 2px 14px #243f7010}
+.dcap{background:#ffffffcf;border-color:#e0e8f3}.dcap.cur{background:#e7efff;outline-color:#325ed6}.dcap.done{background:#edf6f2}
+.card-h{background:linear-gradient(110deg,#ffffffbb,#edf3fd70)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .android-review-tabs,.topbar,.tabs{backdrop-filter:blur(14px) saturate(125%);-webkit-backdrop-filter:blur(14px) saturate(125%)}
+}
+@media(prefers-reduced-transparency:reduce){.en-card,.en-hero,.card,.cue,.android-review-tabs,.topbar,.tabs{background:#f8fbff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+@media(prefers-reduced-motion:reduce){.en-btn,.v4-tab,.v14-tabs button{transition:none!important;transform:none!important}}
+
+/* Native-sized labels and a quieter selected glass segment. */
+.android-review-tabs button.active{background:linear-gradient(145deg,#fff,#f1f6ff);color:#294fb8;box-shadow:0 2px 8px #243f7014,inset 0 1px 0 #fff}
+.android-review-module{border-radius:18px;padding:14px;margin-bottom:14px}
+.android-review-module>header h3{font-size:14px}
+.android-review-chapter small,.v14-due-list article small,.android-progress-title small,.android-manage-chapter>summary small{font-size:12px;line-height:1.7}
+.android-chapter-progress-head p{font-size:12px;line-height:1.8}
+
+/* Transparent frost: atmospheric blue/sea-glass backing with readable ink. */
+body{background:radial-gradient(ellipse 100% 420px at 5% 0,#a9c5eea6,transparent 95%),radial-gradient(ellipse 85% 480px at 100% 480px,#b1ddd59c,transparent 95%),radial-gradient(ellipse 90% 520px at 5% 1000px,#c6d3e9b3,transparent 95%),linear-gradient(155deg,#dce8f6,#e8f1f6 60%,#dceeea)!important}
+.en-card,.v4-unit,.v4-stat,.v4-practice,.v4-family-root,.android-review-module,.android-progress-module,.android-manage-module,.card,.cue{background:linear-gradient(135deg,#ffffff7d,#ffffff45);border-color:#ffffffa6;box-shadow:inset 0 1px 0 #ffffffbd,0 6px 20px #243f7010}
+.en-hero{background:linear-gradient(125deg,#ffffff8c,#e9f4ff52);border-color:#ffffffb3;box-shadow:inset 0 1px 0 #ffffffd9,0 8px 24px #243f7010}
+.android-review-tabs{background:#ffffff57!important;border-color:#ffffffa6}
+.android-review-tabs button.active{background:linear-gradient(145deg,#ffffffe6,#ffffff9c);color:#294fb8;border:1px solid #ffffffbd;box-shadow:0 3px 9px #243f7014}
+.en-page-review .android-review-tabs button.active{background:linear-gradient(145deg,#ffffffe6,#ffffff9c);color:#294fb8;border:1px solid #ffffffbd;box-shadow:0 3px 9px #243f7014}
+.android-review-chapter,.android-manage-chapter,.android-progress-chapters>article{background:#ffffff45;border-color:#ffffff8c}
+.en-btn{background:linear-gradient(145deg,#ffffffc2,#ffffff78);border-color:#ffffffb8}
+.en-btn.primary{background:linear-gradient(145deg,#4778e5,#325ed6);border-color:#325ed6;color:#fff}
+.en-btn.dark{background:linear-gradient(145deg,#304964,#182b43);color:#fff}
+.topbar,.tabs{background:#eef6ff85!important;border-color:#ffffffb3}
+.v14-answer,.android-review-answer{background:#ffffffa8;border-color:#ffffffc2}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ .en-hero,.android-review-tabs,.v14-session,.topbar,.tabs{backdrop-filter:blur(16px) saturate(135%);-webkit-backdrop-filter:blur(16px) saturate(135%)}
+}
+.en-btn,.v4-tab,.v4-book,.android-review-tabs button,.dcap{transition:transform .17s cubic-bezier(.22,1,.36,1),box-shadow .17s ease,background-color .17s ease}
+.en-btn:active,.v4-tab:active,.v4-book:active,.android-review-tabs button:active,.dcap:active{transform:scale(.965)}
+.en-progress i,.progress i{transition:width .28s cubic-bezier(.22,1,.36,1)}
+@media(hover:hover){.en-btn:hover{box-shadow:inset 0 1px 0 #ffffffd9,0 4px 12px #243f701c}}
+html.study-motion-off *,html.study-motion-off *:before,html.study-motion-off *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html.study-motion-off .en-btn:active,html.study-motion-off .v4-tab:active{transform:none!important}
+@media(prefers-reduced-motion:reduce){.en-btn,.v4-tab,.v4-book,.android-review-tabs button,.dcap,.en-progress i,.progress i{transition:none!important;transform:none!important}}
+@media(prefers-reduced-transparency:reduce){.en-card,.en-hero,.v14-session,.v4-unit,.v4-stat,.android-review-module,.android-progress-module,.card,.cue,.topbar,.tabs{background:#f3f7fc!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+
+.android-spell-batch{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;color:#405b79;font-size:13px}
+.android-spell-segments{display:flex;gap:3px;padding:4px;background:#e2edf58c;border:1px solid #ffffffb8;border-radius:16px;box-shadow:inset 0 1px 0 #ffffffd9}
+.android-spell-segments button{min-height:44px;min-width:54px;padding:8px 12px;border:1px solid transparent;border-radius:12px;background:transparent;color:#405b79;font:600 16px/1.3 inherit;cursor:pointer;transition:transform .17s ease,background-color .17s ease,box-shadow .17s ease}
+.android-spell-segments button small{font-size:11px;font-weight:400}
+.android-spell-segments button[aria-pressed=true]{color:#294fb8;background:linear-gradient(145deg,#fffffff0,#ffffffa8);border-color:#ffffffd9;box-shadow:0 3px 8px #243f7014}
+.android-spell-segments button:active{transform:scale(.95)}.android-spell-segments button:focus-visible{outline:2px solid #325ed6;outline-offset:2px}
+.en-content{padding-top:6px}
+@media(max-width:340px){.android-spell-batch{gap:8px}.android-spell-segments button{min-width:46px;padding-inline:9px}}
+@media(prefers-reduced-motion:reduce){.android-spell-segments button{transition:none;transform:none}}
+
+/* Let the actual document continue beneath both system bars; no separate top color band. */
+html.study-edge body{padding-top:var(--study-safe-top,0px);padding-bottom:calc(var(--study-safe-bottom,0px) + 86px)}
+html.study-edge:before{content:none}
+html.study-edge .en-hero,html.study-edge .v14-session,html.study-edge .topbar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.study-edge .android-review-tabs,html.study-edge .en-content>.tabs{backdrop-filter:blur(9px) saturate(115%);-webkit-backdrop-filter:blur(9px) saturate(115%)}
+html.study-edge .android-review-tabs,html.study-edge .en-content>.tabs{top:var(--study-safe-top,0px)}
+.android-spell-segments button{font-family:inherit;font-size:16px;font-weight:600;line-height:1.3}
+
+/* Management opens only the chapter's rows the learner asks to see. */
+.v14-manage{margin-top:14px;padding:18px!important}
+.v14-manage>h2{display:flex;align-items:center;justify-content:space-between;font-size:15px;color:#182b43;margin-bottom:10px}
+.v14-manage>h2 small{display:grid;place-items:center;min-width:30px;height:28px;padding:0 8px;background:#ffffff85;border:1px solid #ffffffb3;border-radius:10px;font-size:12px;color:#405b79}
+.android-manage-module{border:0;background:transparent;box-shadow:none;margin-top:5px}
+.android-manage-module>summary{display:flex;align-items:center;gap:8px;min-height:54px;padding:12px 2px;list-style:none;cursor:pointer}
+.android-manage-module>summary::-webkit-details-marker{display:none}
+.android-manage-module>summary>span{flex:1;font-size:14px}.android-manage-module>summary>small{color:#526781;font-size:11px;font-weight:400}
+.android-manage-module>summary:after{content:'⌄';font-size:18px;color:#526781;transition:transform .18s ease}.android-manage-module[open]>summary:after{transform:rotate(180deg)}
+.android-manage-chapter{margin:8px 0;background:linear-gradient(145deg,#ffffff8a,#ffffff45);border:1px solid #ffffffb3;border-radius:14px;overflow:hidden}
+.android-manage-chapter>summary{padding:14px;gap:8px;min-height:64px}.android-manage-chapter>summary b{font-size:13px}.android-manage-chapter>summary em{font-size:11px;flex:none;color:#325ed6}
+.android-manage-rows .android-manage-row{padding:14px 0;margin:0 14px;border:0;border-top:1px solid #d5e1ec80}
+.android-manage-row-actions .en-btn{border-radius:11px;min-height:44px}.android-manage-row-actions .en-btn:last-child{background:#ffffff57;color:#965345;border-color:#ecd9d280;box-shadow:none}
+.android-review-search{background:#ffffff78;border:1px solid #ffffffcc;border-radius:15px;min-height:48px;margin-top:16px;box-shadow:inset 0 1px 0 #fff}
+.android-review-search input{font-size:14px;min-height:46px}.android-review-search:focus-within{outline:2px solid #9bb8eb;outline-offset:2px}
+.android-review-bulk{padding:0!important;margin-top:12px}.android-review-bulk>summary{min-height:52px;padding:14px 18px;cursor:pointer;color:#405b79;font-size:13px}.android-review-bulk .android-manage-tools{position:static;border:0;background:transparent;box-shadow:none;padding:0 14px 14px}
+[data-manage-chapter][hidden],.android-manage-module[hidden],#androidManageNoMatches[hidden]{display:none!important}
+
+/* Four equal touch targets; every label stays centered, including the short 管理 label. */
+.en-content .android-review-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;overflow:visible;align-items:stretch}
+.en-content .android-review-tabs button{display:flex;align-items:center;justify-content:center;text-align:center;min-width:0;width:100%;min-height:44px;padding:10px 2px;margin:0;border:1px solid transparent;border-radius:12px;line-height:1.4;font-size:13px;white-space:nowrap}
+.en-content .android-review-tabs button.active{border-color:#ffffffbd}
+/* Keep pressed controls anchored; a subtle inset reads better than a large zoom. */
+.en-content :is(.en-btn,.v4-tab,.v4-book,.android-review-tabs button,.android-spell-segments button,.dcap):active{transform:translateY(1px) scale(.99);filter:brightness(.98);box-shadow:inset 0 2px 5px #243f7014}
+.en-content :is(button,a,summary){-webkit-tap-highlight-color:transparent}
+.en-content .android-review-tabs button:focus-visible{outline:2px solid #325ed6;outline-offset:2px}
+html.study-motion-off .en-content :is(button,a):active{transform:none!important}
+@media(prefers-reduced-motion:reduce){.en-content :is(button,a):active{transform:none!important}}

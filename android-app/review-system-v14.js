@@ -23,8 +23,9 @@ function reviewModules(){return ['root','phon','phonics','mother','core','spell'
 function reviewItem(c){
  const k=String(c.item_key),r=c.source==='root'?roots.find(x=>String(x.day_no)===k):record(c.module,k),d=r?.data||{};
  if(c.source==='root'){
-  const day=DATA.days?.find(x=>Number(x.day)===Number(k));
-  const answer=day?day.sections.map(s=>'<section class="v14-answer-section"><h3>'+esc(s.title)+'</h3>'+(s.desc?'<p>'+esc(String(s.desc).replace(/\*\*/g,''))+'</p>':'')+(s.words||[]).map(w=>'<p><b>'+esc(w['单词']||'')+'</b> · '+esc(w['中文意思']||'')+(w['怎么记']?'<br>'+esc(w['怎么记']):'')+(w['怎么拆']?'<br>'+esc(w['怎么拆']):'')+(w['例句']?'<br>'+esc(w['例句']):'')+'</p>').join('')+'</section>').join(''):'第 '+esc(k)+' 天课程内容';
+  const day=(window.StudyRootDays||[]).find(x=>Number(x.day)===Number(k));
+  const days=[7,14,21,28].includes(Number(k))?(window.StudyRootDays||[]).filter(x=>x.day>=Number(k)-6&&x.day<Number(k)):(day?[day]:[]);
+  const answer=days.length?days.flatMap(x=>x.sections||[]).map(s=>'<section class="v14-answer-section"><h3>'+esc(s.title)+'</h3>'+(s.desc?'<p>'+esc(String(s.desc).replace(/\*\*/g,''))+'</p>':'')+(s.words||[]).map(w=>'<p><b>'+esc(w['单词']||'')+'</b> · '+esc(w['中文意思']||'')+(w['怎么记']?'<br>'+esc(w['怎么记']):'')+(w['怎么拆']?'<br>'+esc(w['怎么拆']):'')+(w['例句']?'<br>'+esc(w['例句']):'')+'</p>').join('')+'</section>').join(''):'第 '+esc(k)+' 天课程内容';
   return {title:'第 '+k+' 天 · '+(day?.title||'词根词缀'),prompt:'请先回忆本日的前缀、后缀、母词和代表词。',answer,word:''};
  }
  if(c.module==='core'){const w=DATA.core.find(x=>String(x.no)===k);return {title:w?.w||d.title||k,word:w?.w||d.canonical_word||'',prompt:'先回忆英文的中文意思、词性和拼写。',answer:'<p>'+esc(w?.m||d.meaning||'')+'</p>'+(w?.ipa?'<p>音标：'+esc(w.ipa)+'</p>':'')+(w?.sp?'<p>考点：'+esc(w.sp)+'</p>':'')+(d.custom_note?'<p>'+esc(d.custom_note)+'</p>':'')}}
@@ -152,8 +153,8 @@ load=async function(renderAfter=true){
  const version=await rpc('study_review_version');reviewUpgradeReady=!version.error&&Number(version.data?.version)>=2;
  if(reviewUpgradeReady){
   const uid=session?.user.id;
-  if(renderAfter||reviewPanel==='history'){
-   const [h,rh]=await Promise.all([pages('study_reviews',q=>q.select('*').eq('user_id',uid).not('completed_at','is',null).order('completed_at',{ascending:false})),pages('day32_reviews',q=>q.select('*').eq('user_id',uid).not('completed_at','is',null).order('completed_at',{ascending:false}))]);
+  if(reviewPanel==='history'){
+   const [h,rh]=await Promise.all([pages('study_reviews',q=>q.select('*').eq('user_id',uid).not('completed_at','is',null).order('completed_at',{ascending:false}).order('id',{ascending:false})),pages('day32_reviews',q=>q.select('*').eq('user_id',uid).not('completed_at','is',null).order('completed_at',{ascending:false}).order('id',{ascending:false}))]);
    if(StudyAccount.session?.user.id===uid){reviewHistoryRows=h;reviewHistoryRootRows=rh}
   }
   if(!gradingReview)restoreReviewSession();

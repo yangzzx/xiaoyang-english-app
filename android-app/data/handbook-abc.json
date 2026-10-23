@@ -1,0 +1,522 @@
+[
+  {
+    "title": "附录 A · 高频前缀速查",
+    "rows": [
+      [
+        "in-/im-",
+        "向内；否定",
+        "import /ˈɪmpɔːt/、impossible /ɪmˈpɒsəbl/"
+      ],
+      [
+        "ex-",
+        "向外；离开",
+        "export /ˈekspɔːt/、exit /ˈeksɪt/"
+      ],
+      [
+        "re-",
+        "回；再；重复",
+        "return /rɪˈtɜːn/、review /rɪˈvjuː/、respect /rɪˈspekt/"
+      ],
+      [
+        "pre-",
+        "前；预先",
+        "preview /ˈpriːvjuː/、precede /prɪˈsiːd/、predict /prɪˈdɪkt/"
+      ],
+      [
+        "pro-",
+        "向前；支持",
+        "progress /ˈprəʊɡres/、prospect /ˈprɒspekt/、produce /prəˈdjuːs/"
+      ],
+      [
+        "sub-",
+        "下；低于",
+        "subway /ˈsʌbweɪ/、submit /səbˈmɪt/、subtract /səbˈtrækt/"
+      ],
+      [
+        "dis-",
+        "分开；否定",
+        "disappear /ˌdɪsəˈpɪə/、distract /dɪˈstrækt/、discord /ˈdɪskɔːd/"
+      ],
+      [
+        "com-/con-",
+        "共同；一起",
+        "combine /kəmˈbaɪn/、conclude /kənˈkluːd/、consist /kənˈsɪst/"
+      ],
+      [
+        "trans-",
+        "跨越；转移",
+        "transport /trænˈspɔːt/、transform /trænsˈfɔːm/、transmit /trænzˈmɪt/"
+      ],
+      [
+        "mis-",
+        "错误；坏",
+        "mistake /mɪˈsteɪk/、misunderstand /ˌmɪsʌndəˈstænd/"
+      ],
+      [
+        "over-",
+        "过度；在上",
+        "overuse /ˌəʊvəˈjuːz/、overlook /ˌəʊvəˈlʊk/"
+      ],
+      [
+        "under-",
+        "不足；在下",
+        "underground /ˈʌndəɡraʊnd/、understand /ˌʌndəˈstænd/"
+      ],
+      [
+        "un-",
+        "否定",
+        "unhappy /ʌnˈhæpi/、unable /ʌnˈeɪbl/"
+      ],
+      [
+        "anti-",
+        "反对；相反",
+        "antiwar /ˈæntiwɔː/、antibiotic /ˌæntibaɪˈɒtɪk/"
+      ],
+      [
+        "auto-",
+        "自己；自动",
+        "automatic /ˌɔːtəˈmætɪk/、autograph /ˈɔːtəɡrɑːf/"
+      ],
+      [
+        "bio-",
+        "生命",
+        "biology /baɪˈɒlədʒi/、biography /baɪˈɒɡrəfi/"
+      ],
+      [
+        "chron-",
+        "时间",
+        "chronic /ˈkrɒnɪk/、synchronize /ˈsɪŋkrənaɪz/"
+      ],
+      [
+        "geo-",
+        "地球",
+        "geography /dʒiˈɒɡrəfi/、geology /dʒiˈɒlədʒi/"
+      ],
+      [
+        "biblio-",
+        "书",
+        "bibliography /ˌbɪbliˈɒɡrəfi/、bible /ˈbaɪbl/"
+      ],
+      [
+        "cide-",
+        "切；杀",
+        "pesticide /ˈpestɪsaɪd/、suicide /ˈsuːɪsaɪd/"
+      ],
+      [
+        "clar-",
+        "清楚",
+        "clarify /ˈklærəfaɪ/、declare /dɪˈkleə/"
+      ],
+      [
+        "cogn-",
+        "知道",
+        "recognize /ˈrekəɡnaɪz/、cognitive /ˈkɒɡnətɪv/"
+      ],
+      [
+        "cult-",
+        "耕种；培养",
+        "culture /ˈkʌltʃə/、cultivate /ˈkʌltɪveɪt/"
+      ],
+      [
+        "cycl-",
+        "圆；环",
+        "cycle /ˈsaɪkl/、circle /ˈsɜːkl/"
+      ]
+    ]
+  },
+  {
+    "title": "附录 B · 核心后缀速查",
+    "rows": [
+      [
+        "-tion/-sion/-ation",
+        "名词",
+        "information /ˌɪnfəˈmeɪʃn/、action /ˈækʃn/"
+      ],
+      [
+        "-ive",
+        "形容词",
+        "active /ˈæktɪv/、native /ˈneɪtɪv/、sensitive /ˈsensətɪv/"
+      ],
+      [
+        "-able/-ible",
+        "形容词",
+        "visible /ˈvɪzəbl/、audible /ˈɔːdəbl/、credible /ˈkredəbl/"
+      ],
+      [
+        "-ly",
+        "副词",
+        "slowly /ˈsləʊli/、quickly /ˈkwɪkli/"
+      ],
+      [
+        "-er/-or",
+        "名词",
+        "porter /ˈpɔːtə/、teacher /ˈtiːtʃə/、spectator /spekˈteɪtə/"
+      ],
+      [
+        "-ment",
+        "名词",
+        "movement /ˈmuːvmənt/"
+      ],
+      [
+        "-ic/-ical",
+        "形容词",
+        "basic /ˈbeɪsɪk/、chronic /ˈkrɒnɪk/"
+      ],
+      [
+        "-ity/-ency",
+        "名词",
+        "ability /əˈbɪləti/、clarity /ˈklærəti/、brevity /ˈbrevəti/"
+      ],
+      [
+        "-ist",
+        "名词",
+        "scientist /ˈsaɪəntɪst/、psychiatrist /saɪˈkaɪətrɪst/"
+      ],
+      [
+        "-less",
+        "形容词",
+        "careless /ˈkeələs/、homeless /ˈhəʊmləs/"
+      ],
+      [
+        "-ness",
+        "名词",
+        "kindness /ˈkaɪndnəs/、illness /ˈɪlnəs/"
+      ],
+      [
+        "-ous",
+        "形容词",
+        "famous /ˈfeɪməs/、dangerous /ˈdeɪndʒərəs/"
+      ],
+      [
+        "-ship",
+        "名词",
+        "friendship /ˈfrendʃɪp/"
+      ],
+      [
+        "-th",
+        "名词",
+        "health /helθ/、truth /truːθ/"
+      ],
+      [
+        "-ful",
+        "形容词",
+        "careful /ˈkeəfl/、useful /ˈjuːsfl/"
+      ],
+      [
+        "-ure",
+        "名词",
+        "nature /ˈneɪtʃə/、culture /ˈkʌltʃə/"
+      ],
+      [
+        "-ward(s)",
+        "副词",
+        "forward /ˈfɔːwəd/、backward /ˈbækwəd/"
+      ],
+      [
+        "-wise",
+        "副词",
+        "clockwise /ˈklɒkwaɪz/、otherwise /ˈʌðəwaɪz/"
+      ],
+      [
+        "-ence",
+        "名词",
+        "audience /ˈɔːdiəns/、difference /ˈdɪfrəns/"
+      ],
+      [
+        "-hood",
+        "名词",
+        "childhood /ˈtʃaɪldhʊd/、neighborhood /ˈneɪbəhʊd/"
+      ],
+      [
+        "-ism",
+        "名词",
+        "tourism /ˈtʊərɪzəm/、egoism /ˈiːɡəʊɪzəm/"
+      ]
+    ]
+  },
+  {
+    "title": "附录 C · 56组母词索引",
+    "rows": [
+      [
+        "port",
+        "搬运；港口",
+        "import /ɪmˈpɔːt/、export /ˈekspɔːt/、transport /trænˈspɔːt/"
+      ],
+      [
+        "form",
+        "形状；形式",
+        "inform /ɪnˈfɔːm/、transform /trænsˈfɔːm/、uniform /ˈjuːnɪfɔːm/"
+      ],
+      [
+        "spect/spic",
+        "看",
+        "expect /ɪkˈspekt/、inspect /ɪnˈspekt/、respect /rɪˈspekt/、prospect /ˈprɒspekt/"
+      ],
+      [
+        "mid/mod/med",
+        "中间",
+        "middle /ˈmɪdl/、medium /ˈmiːdiəm/、immediate /ɪˈmiːdiət/"
+      ],
+      [
+        "sens/sent",
+        "感觉",
+        "sense /sens/、sensitive /ˈsensətɪv/、sensible /ˈsensəbl/"
+      ],
+      [
+        "nat",
+        "出生；本地",
+        "native /ˈneɪtɪv/、natural /ˈnætʃrəl/、innate /ɪˈneɪt/"
+      ],
+      [
+        "cess/ceed/cede",
+        "走；进行",
+        "precede /prɪˈsiːd/、recede /rɪˈsiːd/、process /ˈprəʊses/"
+      ],
+      [
+        "tract",
+        "拉；拖",
+        "attract /əˈtrækt/、extract /ɪkˈstrækt/、contract /ˈkɒntrækt/、subtract /səbˈtrækt/"
+      ],
+      [
+        "miss/mit",
+        "送；释放",
+        "admit /ədˈmɪt/、submit /səbˈmɪt/、transmit /trænzˈmɪt/、dismiss /dɪsˈmɪs/"
+      ],
+      [
+        "sist",
+        "站；立",
+        "resist /rɪˈzɪst/、insist /ɪnˈsɪst/、persist /pəˈsɪst/、consist /kənˈsɪst/"
+      ],
+      [
+        "pend/pens",
+        "悬挂；衡量",
+        "depend /dɪˈpend/、expense /ɪkˈspens/、pension /ˈpenʃn/"
+      ],
+      [
+        "duc/duct",
+        "引导",
+        "reduce /rɪˈdjuːs/、produce /prəˈdjuːs/、conduct /kənˈdʌkt/、introduce /ˌɪntrəˈdjuːs/"
+      ],
+      [
+        "vis/vid",
+        "看",
+        "visit /ˈvɪzɪt/、visible /ˈvɪzəbl/、provide /prəˈvaɪd/、revise /rɪˈvaɪz/"
+      ],
+      [
+        "audi/aud",
+        "听",
+        "audio /ˈɔːdiəʊ/、audience /ˈɔːdiəns/、audible /ˈɔːdəbl/"
+      ],
+      [
+        "clud/clus",
+        "关闭",
+        "include /ɪnˈkluːd/、exclude /ɪkˈskluːd/、conclude /kənˈkluːd/"
+      ],
+      [
+        "log/logo",
+        "说话；逻辑",
+        "logic /ˈlɒdʒɪk/、dialogue /ˈdaɪəlɒɡ/、prologue /ˈprəʊlɒɡ/"
+      ],
+      [
+        "graph/gram",
+        "写；记录",
+        "program /ˈprəʊɡræm/、telegram /ˈtelɪɡræm/、biography /baɪˈɒɡrəfi/、geography /dʒiˈɒɡrəfi/"
+      ],
+      [
+        "phon",
+        "声音",
+        "phone /fəʊn/、telephone /ˈtelɪfəʊn/、symphony /ˈsɪmfəni/"
+      ],
+      [
+        "vers/vert",
+        "转",
+        "reverse /rɪˈvɜːs/、convert /kənˈvɜːt/、diverse /daɪˈvɜːs/"
+      ],
+      [
+        "path",
+        "感情；痛苦",
+        "sympathy /ˈsɪmpəθi/、empathy /ˈempəθi/、pathetic /pəˈθetɪk/"
+      ],
+      [
+        "viv/vit",
+        "生命",
+        "vivid /ˈvɪvɪd/、revive /rɪˈvaɪv/、survive /səˈvaɪv/、vital /ˈvaɪtl/"
+      ],
+      [
+        "voc/vok",
+        "声音；呼唤",
+        "vocal /ˈvəʊkl/、provoke /prəˈvəʊk/、advocate /ˈædvəkeɪt/、vocabulary /vəˈkæbjələri/"
+      ],
+      [
+        "volv/volu",
+        "卷；转",
+        "involve /ɪnˈvɒlv/、revolve /rɪˈvɒlv/、evolve /ɪˈvɒlv/"
+      ],
+      [
+        "act",
+        "行动",
+        "active /ˈæktɪv/、action /ˈækʃn/、react /riˈækt/、transaction /trænˈzækʃn/"
+      ],
+      [
+        "tele",
+        "远",
+        "telephone /ˈtelɪfəʊn/、television /ˈtelɪvɪʒn/、telegram /ˈtelɪɡræm/"
+      ],
+      [
+        "therm",
+        "热",
+        "thermometer /θəˈmɒmɪtə/、thermal /ˈθɜːml/、thermos /ˈθɜːməs/"
+      ],
+      [
+        "vac/van",
+        "空",
+        "vacant /ˈveɪkənt/、vacation /vəˈkeɪʃn/、vanish /ˈvænɪʃ/"
+      ],
+      [
+        "ann/enn",
+        "年",
+        "annual /ˈænjuəl/、anniversary /ˌænɪˈvɜːsəri/、century /ˈsentʃəri/"
+      ],
+      [
+        "anthrop",
+        "人类",
+        "anthropology /ˌænθrəˈpɒlədʒi/、philanthropy /fɪˈlænθrəpi/"
+      ],
+      [
+        "apt",
+        "适合",
+        "apt /æpt/、adapt /əˈdæpt/、aptitude /ˈæptɪtjuːd/"
+      ],
+      [
+        "arch",
+        "统治者；首要",
+        "architect /ˈɑːkɪtekt/、monarch /ˈmɒnək/、anarchy /ˈænəki/"
+      ],
+      [
+        "bio",
+        "生命",
+        "biology /baɪˈɒlədʒi/、biography /baɪˈɒɡrəfi/、antibiotic /ˌæntibaɪˈɒtɪk/"
+      ],
+      [
+        "cord",
+        "心",
+        "core /kɔː/、cordial /ˈkɔːdiəl/、accord /əˈkɔːd/、discord /ˈdɪskɔːd/"
+      ],
+      [
+        "chron",
+        "时间",
+        "chronic /ˈkrɒnɪk/、synchronize /ˈsɪŋkrənaɪz/、chronology /krəˈnɒlədʒi/"
+      ],
+      [
+        "dem",
+        "人民",
+        "democracy /dɪˈmɒkrəsi/、demography /dɪˈmɒɡrəfi/、epidemic /ˌepɪˈdemɪk/"
+      ],
+      [
+        "geo",
+        "地球",
+        "geography /dʒiˈɒɡrəfi/、geology /dʒiˈɒlədʒi/、geometry /dʒiˈɒmətri/"
+      ],
+      [
+        "bell",
+        "战争",
+        "rebel /rɪˈbel/、rebellion /rɪˈbeljən/、belligerent /bəˈlɪdʒərənt/"
+      ],
+      [
+        "biblio",
+        "书",
+        "bibliography /ˌbɪbliˈɒɡrəfi/、bible /ˈbaɪbl/"
+      ],
+      [
+        "brev",
+        "短",
+        "brief /briːf/、abbreviate /əˈbriːvieɪt/、brevity /ˈbrevəti/"
+      ],
+      [
+        "cide/cis",
+        "切；杀",
+        "decide /dɪˈsaɪd/、pesticide /ˈpestɪsaɪd/、suicide /ˈsuːɪsaɪd/"
+      ],
+      [
+        "claim/clam",
+        "喊；声称",
+        "claim /kleɪm/、exclaim /ɪkˈskleɪm/、proclaim /prəˈkleɪm/、reclaim /rɪˈkleɪm/"
+      ],
+      [
+        "clar",
+        "清楚",
+        "clarify /ˈklærəfaɪ/、declare /dɪˈkleə/、clarity /ˈklærəti/"
+      ],
+      [
+        "cogn",
+        "知道",
+        "recognize /ˈrekəɡnaɪz/、cognitive /ˈkɒɡnətɪv/、incognito /ˌɪnkɒɡˈniːtəʊ/"
+      ],
+      [
+        "corp",
+        "身体；团体",
+        "corporation /ˌkɔːpəˈreɪʃn/、corporate /ˈkɔːpərət/、incorporate /ɪnˈkɔːpəreɪt/"
+      ],
+      [
+        "cred",
+        "相信",
+        "credit /ˈkredɪt/、credible /ˈkredəbl/、incredible /ɪnˈkredəbl/"
+      ],
+      [
+        "cult",
+        "耕种；培养",
+        "culture /ˈkʌltʃə/、cultivate /ˈkʌltɪveɪt/、agriculture /ˈæɡrɪkʌltʃə/"
+      ],
+      [
+        "cur",
+        "跑；关心",
+        "current /ˈkʌrənt/、curious /ˈkjʊəriəs/、secure /sɪˈkjʊə/、occur /əˈkɜː/"
+      ],
+      [
+        "cycl/circ",
+        "圆；环",
+        "cycle /ˈsaɪkl/、circle /ˈsɜːkl/、circulate /ˈsɜːkjəleɪt/、circuit /ˈsɜːkɪt/"
+      ],
+      [
+        "psych",
+        "心理",
+        "psychology /saɪˈkɒlədʒi/、psychiatrist /saɪˈkaɪətrɪst/"
+      ],
+      [
+        "dic/dict",
+        "说",
+        "dictionary /ˈdɪkʃənri/、dictate /dɪkˈteɪt/、predict /prɪˈdɪkt/"
+      ],
+      [
+        "dom",
+        "家；统治",
+        "domestic /dəˈmestɪk/、dominate /ˈdɒmɪneɪt/、kingdom /ˈkɪŋdəm/"
+      ],
+      [
+        "dorm",
+        "睡眠",
+        "dormitory /ˈdɔːmətri/、dormant /ˈdɔːmənt/"
+      ],
+      [
+        "dur",
+        "持续",
+        "during /ˈdjʊərɪŋ/、durable /ˈdjʊərəbl/、endure /ɪnˈdjʊə/、duration /djuˈreɪʃn/"
+      ],
+      [
+        "equ",
+        "平等",
+        "equal /ˈiːkwəl/、equator /ɪˈkweɪtə/、equality /iˈkwɒləti/"
+      ],
+      [
+        "ego",
+        "自我",
+        "ego /ˈiːɡəʊ/、egocentric /ˌiːɡəʊˈsentrɪk/、egoism /ˈiːɡəʊɪzəm/"
+      ],
+      [
+        "agr",
+        "田野",
+        "agriculture /ˈæɡrɪkʌltʃə/、agronomy /əˈɡrɒnəmi/"
+      ]
+    ]
+  }
+]
