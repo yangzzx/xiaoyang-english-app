@@ -150,7 +150,7 @@ public final class MainActivity extends Activity {
             case 3:pasteAuth();break;
             case 5:checkCloud();break;
             case 7:showLicenses();break;
-            case 4:new AlertDialog.Builder(this).setTitle("小洋专升本英语 "+getVersionName()).setMessage("课程随 App 安装，无需开启电脑。\n\n使用原邮箱和密码登录，即可同步各模块进度、课程链接和笔记。联网后才能登录和保存到云端。\n\nB 站课程在 B 站或浏览器打开，返回 App 继续记笔记。照片由你选择后上传。\n\n邮件验证一般会自动回到 App；未跳回时，可复制邮件内的完整验证链接，通过“我的 → 邮件验证”打开。\n\n建议保持 Android System WebView 或 Chrome 为最新版本。更新时直接覆盖安装，不要卸载。\n\n系统要求：Android 8.0 及以上。个人使用版，未上架应用商店。").setPositiveButton("知道了",null).show();break;
+            case 4:new AlertDialog.Builder(this).setTitle("WovikHY "+getVersionName()).setMessage("课程随 App 安装，无需开启电脑。\n\n使用原邮箱和密码登录，即可同步各模块进度、课程链接和笔记。联网后才能登录和保存到云端。\n\nB 站课程在 B 站或浏览器打开，返回 App 继续记笔记。照片由你选择后上传。\n\n邮件验证一般会自动回到 App；未跳回时，可复制邮件内的完整验证链接，通过“我的 → 邮件验证”打开。\n\n建议保持 Android System WebView 或 Chrome 为最新版本。更新时直接覆盖安装，不要卸载。\n\n系统要求：Android 8.0 及以上。个人使用版，未上架应用商店。").setPositiveButton("知道了",null).show();break;
                     case 8:web.evaluateJavascript("window.StudyAccount && StudyAccount.open()",null);break;
             case 9:openModule(12);break;
             case 10:web.evaluateJavascript("window.StudyAccount && StudyAccount.open('summary')",null);break;

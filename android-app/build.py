@@ -135,11 +135,11 @@ for module in modules:
         text=text.replace("let html=isLinkModule()?courseLinksView():hero();", "if(!ready){const retry=document.createElement('button');retry.type='button';retry.className='en-btn';retry.textContent=busy?'正在连接…':'重新连接';retry.disabled=busy;retry.onclick=refresh;$('globalError').append(document.createElement('br'),retry)}let html=isLinkModule()?courseLinksView():hero();")
     destination=ASSETS/relative;destination.parent.mkdir(exist_ok=True);destination.write_text(text,encoding='utf-8')
 
-logo=Image.open(W/'brand-logo.jpg').convert('RGB')
+logo=Image.open(W/'brand-logo.png').convert('RGB')
 for density,size in [('mdpi',48),('hdpi',72),('xhdpi',96),('xxhdpi',144),('xxxhdpi',192)]:
     folder=P/'res'/('mipmap-'+density);folder.mkdir(exist_ok=True)
-    icon=Image.new('RGB',(size,size),'#152236');inner=ImageOps.contain(logo,(round(size*.82),round(size*.82)),Image.Resampling.LANCZOS)
-    icon.paste(inner,((size-inner.width)//2,(size-inner.height)//2));icon.save(folder/'ic_launcher.png')
+    icon=logo.resize((size,size),Image.Resampling.LANCZOS)
+    icon.save(folder/'ic_launcher.png')
 
 # Compile Java and resources without Gradle or an additional application framework.
 unsigned=BUILD/'unsigned.apk'
@@ -177,7 +177,7 @@ with zipfile.ZipFile(out) as z:
     assert len([n for n in z.namelist() if n.startswith('assets/') and n.endswith('index.html')])==13
     assert not any('private' in n or n.endswith('.p12') or n.endswith('.sql') for n in z.namelist())
 (B/'outputs').mkdir(exist_ok=True)
-release=B/('outputs/小洋专升本英语-安卓安装包-v'+version+'.apk')
+release=B/('outputs/WovikHY-安卓安装包-v'+version+'.apk')
 shutil.copy2(out,release)
 report={'apk':release.name,'bytes':out.stat().st_size,'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),'sdk_js_sha256':hashlib.sha256(sdk.read_bytes()).hexdigest(),'pages':13,'minAndroid':'8.0','targetApi':35,'signatureVerification':verification,'badging':badging}
 (BUILD/'apk-verification.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')

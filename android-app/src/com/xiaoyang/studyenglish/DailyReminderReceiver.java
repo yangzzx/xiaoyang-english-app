@@ -36,7 +36,7 @@ public final class DailyReminderReceiver extends BroadcastReceiver {
         Intent open=context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
         PendingIntent tap=PendingIntent.getActivity(context,7392,open,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
         Notification.Builder builder=Build.VERSION.SDK_INT>=26?new Notification.Builder(context,CHANNEL):new Notification.Builder(context);
-        manager.notify(7391,builder.setSmallIcon(android.R.drawable.ic_popup_reminder).setContentTitle("该复习啦").setContentText("打开小洋专升本英语，完成今天的章节复习。").setContentIntent(tap).setAutoCancel(true).build());
+        manager.notify(7391,builder.setSmallIcon(android.R.drawable.ic_popup_reminder).setContentTitle("该复习啦").setContentText("打开 WovikHY，完成今天的章节复习。").setContentIntent(tap).setAutoCancel(true).build());
         schedule(context,hour,minute);
     }
 }

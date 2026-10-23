@@ -6,7 +6,7 @@
 - android-app：安卓 Java 代码、界面样式、运行逻辑和构建脚本。
 - 手机页面：App 内使用的 13 个 WebView 学习页面；它们是手机界面的必要源码。
 - android-app/sql：本地保存的云端 SQL 文件，不代表云端数据库当前状态。不要未经检查重新执行旧迁移，尤其是 06。
-- work/brand-logo.jpg：构建图标所需素材。
+- work/brand-logo.png：构建图标所需素材。
 
 构建环境：JDK 17+、Android Platform 35、Build Tools 34.0.0、Python 和 Pillow。
 配置 STUDY_JDK、STUDY_BUILD_TOOLS、STUDY_ANDROID_JAR 后，在本目录运行：
